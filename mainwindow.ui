@@ -215,7 +215,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>590</x>
       <y>10</y>
-      <width>71</width>
+      <width>97</width>
       <height>85</height>
      </rect>
     </property>
@@ -241,33 +241,12 @@ p, li { white-space: pre-wrap; }
       </widget>
      </item>
      <item>
-      <widget class="QLCDNumber" name="Bat">
-       <property name="enabled">
-        <bool>true</bool>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="maximum">
+        <number>101</number>
        </property>
-       <property name="cursor">
-        <cursorShape>BlankCursor</cursorShape>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Box</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <property name="smallDecimalPoint">
-        <bool>false</bool>
+       <property name="value">
+        <number>24</number>
        </property>
       </widget>
      </item>

@@ -1,4 +1,7 @@
 #include "client.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 
 Client::Client(string ip, int port )
 {

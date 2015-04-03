@@ -6,7 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //QObject::connect(ui->Speed, SIGNAL(valueChanged(int)), ui->progressBar, SLOT(setValue(int)));
 }
+
 
 MainWindow::~MainWindow()
 {

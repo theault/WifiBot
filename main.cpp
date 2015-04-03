@@ -2,6 +2,7 @@
 #include <QApplication>
 #include "client.h"
 #include "mainwindow.h"
+#include"ui_mainwindow.h"
 
 using namespace std;
 
@@ -31,9 +32,14 @@ int main(int argc, char *argv[])
      }
     cout << "fin communication"<<endl;
     return 0;*/
+
     QApplication app(argc, argv);
     MainWindow wnd;
     wnd.show();
     app.exec();
+    Ui::MainWindow *toto;
+    //QObject::connect(toto->Speed, toto->Speed->isWindowModified(), toto->progressBar, toto->progressBar->setValue(toto->Speed->value()));
+     QObject::connect(toto->Speed, SIGNAL(valueChanged(int)), toto->progressBar, SLOT(setValue(int)));
+    //toto->progressBar->setValue(toto->Speed->value());
 }
 
