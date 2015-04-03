@@ -444,21 +444,6 @@ p, li { white-space: pre-wrap; }
      </size>
     </property>
    </widget>
-   <widget class="QWebView" name="VideoRobot" native="true">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>441</width>
-      <height>331</height>
-     </rect>
-    </property>
-    <property name="url" stdset="0">
-     <url>
-      <string>about:blank</string>
-     </url>
-    </property>
-   </widget>
    <widget class="QPushButton" name="Avancer">
     <property name="geometry">
      <rect>
@@ -593,13 +578,6 @@ p, li { white-space: pre-wrap; }
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

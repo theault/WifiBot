@@ -1,6 +1,5 @@
 #include <iostream>
 #include <QApplication>
-#include <QtWebKit/QtWebKit>
 #include "client.h"
 #include "mainwindow.h"
 
