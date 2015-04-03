@@ -1,11 +1,14 @@
 #include <iostream>
+#include <QApplication>
+#include <QtWebKit/QtWebKit>
 #include "client.h"
+#include "mainwindow.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-    Client test("192.168.1.106",15020);
+    /*Client test("192.168.1.106",15020);
     test.launch();
     for(int i=0; i<50; i++)
      {
@@ -28,6 +31,10 @@ int main()
         test.Communication(5 , 120);
      }
     cout << "fin communication"<<endl;
-    return 0;
+    return 0;*/
+    QApplication app(argc, argv);
+    MainWindow wnd;
+    wnd.show();
+    app.exec();
 }
 
