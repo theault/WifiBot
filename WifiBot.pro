@@ -1,11 +1,11 @@
+QT += core gui
+QT += network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
-CONFIG -= qt
 
 SOURCES += main.cpp \
-    serveur.cpp
+    client.cpp
 
 HEADERS += \
-    serveur.h
+    client.h
 
