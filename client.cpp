@@ -74,6 +74,7 @@ void Client::Direction(int direction, int vitesse)
 
 void Client::receive()
 {
+    Ui::MainWindow *ui;
     char sbuf[21];
      socket->read( sbuf, 21);
 
@@ -82,6 +83,7 @@ void Client::receive()
          if(SpeedFront > 32767)
             SpeedFront=SpeedFront-65536;
          int BatLevel=sbuf[2];
+         ui->progressBar->setValue(BatLevel);
          char IR=sbuf[3];
          char IR2=sbuf[4];
          int SpeedFront1=(int)(sbuf[10] << 8) + sbuf[9];
