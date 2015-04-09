@@ -31,7 +31,7 @@ void Client::Communication( int direction, int vitesse )
     package.append((char)0);
     package.append((char) VitroueB);
     package.append((char)0);
-    package.append((char)80);
+    package.append((char) flag);
 
     quint16 crc = Crc16( &package, 1); // calcul du crc du package envoyé
     package.append((char)crc);
@@ -39,7 +39,6 @@ void Client::Communication( int direction, int vitesse )
 
     socket->write(package);
     socket->flush();
-
     receive();
 }
 
@@ -48,23 +47,28 @@ void Client::Direction(int direction, int vitesse)
     switch(direction){
         case 1 :   VitroueA = vitesse;// tourner à droite
                    VitroueB = ((vitesse/100)*60);
+                   flag =16;
                    break;
 
         case 2 :    VitroueA =  ((vitesse/100)*60); //tourner à gauche
                     VitroueB = vitesse;
+                    flag = 64;
                     break;
 
         case 3 :    VitroueA =  vitesse;//continuer tout droit
                     VitroueB =  vitesse;
+                    flag=80;
                     break;
 
         case 4 :    VitroueA =   vitesse;// aller en arriere
                     VitroueB =   vitesse;
+                    flag = 0;
                     break;
 
          default : cout<< "erreur direction "<<endl;
                    VitroueA =0;
                    VitroueB =0;
+                   flag =0;
                    break;
     }
 }
@@ -89,8 +93,9 @@ void Client::receive()
          char IR2bis=sbuf[12];
          char Current1=sbuf[17];
          char Current2=sbuf[17];
-
+         cout<<"-----------------------------------------------"<<endl
          cout<<"test :: "<< SpeedFront << " level bat "<<BatLevel << " vitesse " << SpeedFront1 <<endl;
+        cout<<"--------------------------------------------------"
 }
 
 quint16 Client::Crc16(QByteArray* byteArray, int pos){

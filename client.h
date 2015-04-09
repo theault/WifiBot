@@ -25,6 +25,7 @@ private:
     QTcpSocket* socket;
     char VitroueA;
     char VitroueB;
+    char flag;
 };
 
 #endif // CLIENT_H
