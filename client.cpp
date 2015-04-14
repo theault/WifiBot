@@ -1,6 +1,5 @@
 #include "client.h"
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+
 
 
 Client::Client(string ip, int port )
@@ -17,6 +16,7 @@ void Client::launch()
    bool test = socket->waitForConnected(5000);
 
    if(test)
+       ui->Status->setStyleSheet("QLabel#Status { background: green }");
        cout<<"connexion réussi"<<endl;
 }
 
@@ -74,7 +74,6 @@ void Client::Direction(int direction, int vitesse)
 
 void Client::receive()
 {
-    Ui::MainWindow *ui;
     char sbuf[21];
      socket->read( sbuf, 21);
 

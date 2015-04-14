@@ -5,6 +5,8 @@
 #include <string.h>
 #include <string>
 #include <unistd.h>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 #ifndef CLIENT_H
 #define CLIENT_H
 
@@ -25,6 +27,7 @@ private:
     QTcpSocket* socket;
     char VitroueA;
     char VitroueB;
+    Ui::MainWindow *ui;
 };
 
 #endif // CLIENT_H
