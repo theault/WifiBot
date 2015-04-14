@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Images/1397570809_circle-arrow-right.png</file>
+        <file>Images/1397570814_circle-arrow-down.png</file>
+        <file>Images/1397570814_circle-arrow-up.png</file>
+        <file>Images/1397570820_circle-arrow-left.png</file>
+        <file>Images/1397570822_move.png</file>
+        <file>Images/1397570842_info-sign.png</file>
+        <file>Images/1397572095_remove-sign.png</file>
+        <file>Images/1397572098_ok-sign.png</file>
+        <file>Images/1397572101_router.png</file>
+        <file>Images/1397572103_ok.png</file>
+        <file>Images/1397572705_webcam.png</file>
+        <file>Images/1397572809_my_computer.png</file>
+        <file>Images/1398282578_home.png</file>
+        <file>Images/chassisp.png</file>
+        <file>Images/Wifibot.PNG</file>
+    </qresource>
+</RCC>

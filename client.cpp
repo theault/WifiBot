@@ -1,4 +1,7 @@
 #include "client.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 
 Client::Client(string ip, int port )
 {
@@ -23,7 +26,7 @@ void Client::Communication( int direction, int vitesse )
     QByteArray package ;
 
     Direction(direction, vitesse);
-
+    cout<<"wesh"<<endl;
     package.clear();
     package.append((char)0xff);
     package.append((char)0x07);
@@ -32,13 +35,14 @@ void Client::Communication( int direction, int vitesse )
     package.append((char) VitroueB);
     package.append((char)0);
     package.append((char) flag);
-
+    cout<<"miche"<<endl;
     quint16 crc = Crc16( &package, 1); // calcul du crc du package envoyé
     package.append((char)crc);
     package.append((char)(crc>>8));
 
     socket->write(package);
     socket->flush();
+    cout<<"dedededededed"<<endl;
     receive();
 }
 
@@ -46,13 +50,13 @@ void Client::Direction(int direction, int vitesse)
 {
     switch(direction){
         case 1 :   VitroueA = vitesse;// tourner à droite
-                   VitroueB = ((vitesse/100)*60);
-                   flag =16;
+                   VitroueB = ((vitesse/100)*40);
+                   flag =80;
                    break;
 
-        case 2 :    VitroueA =  ((vitesse/100)*60); //tourner à gauche
+        case 2 :    VitroueA =  ((vitesse/100)*40); //tourner à gauche
                     VitroueB = vitesse;
-                    flag = 64;
+                    flag = 80;
                     break;
 
         case 3 :    VitroueA =  vitesse;//continuer tout droit
@@ -75,6 +79,7 @@ void Client::Direction(int direction, int vitesse)
 
 void Client::receive()
 {
+    Ui::MainWindow *ui;
     char sbuf[21];
      socket->read( sbuf, 21);
 
@@ -83,6 +88,7 @@ void Client::receive()
          if(SpeedFront > 32767)
             SpeedFront=SpeedFront-65536;
          int BatLevel=sbuf[2];
+         //ui->progressBar->setValue(BatLevel);
          char IR=sbuf[3];
          char IR2=sbuf[4];
          int SpeedFront1=(int)(sbuf[10] << 8) + sbuf[9];
@@ -93,9 +99,9 @@ void Client::receive()
          char IR2bis=sbuf[12];
          char Current1=sbuf[17];
          char Current2=sbuf[17];
-         cout<<"-----------------------------------------------"<<endl
+         cout<<"-----------------------------------------------"<<endl;
          cout<<"test :: "<< SpeedFront << " level bat "<<BatLevel << " vitesse " << SpeedFront1 <<endl;
-        cout<<"--------------------------------------------------"
+        cout<<"--------------------------------------------------"<<endl;
 }
 
 quint16 Client::Crc16(QByteArray* byteArray, int pos){
@@ -112,4 +118,9 @@ quint16 Client::Crc16(QByteArray* byteArray, int pos){
         }
     }
     return crc;
+}
+
+bool Client::estconnecte(){
+
+    return socket->isOpen();
 }

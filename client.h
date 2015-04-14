@@ -18,6 +18,7 @@ public:
     void receive();
     void Direction(int direction, int vitesse);
     quint16 Crc16(QByteArray* byteArray, int pos);
+    bool estconnecte();
 
 private:
     int port;
