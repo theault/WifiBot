@@ -1,10 +1,19 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+<<<<<<< HEAD
 #include "client.h"
 #include <QMainWindow>
 #include <QTimer>
 #include <unistd.h>
 
+=======
+#include <QKeyEvent>
+#include <QMessageBox>
+#include <QMainWindow>
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+>>>>>>> de488e6be6b7f327e18919e34c5ace52f00d2723
 namespace Ui {
 class MainWindow;
 }
@@ -16,6 +25,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void keyPressEvent(QKeyEvent *);
 
 
 private slots:

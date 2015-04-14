@@ -23,8 +23,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
 void MainWindow::on_Avancer_pressed()
 {
     direction=3;
@@ -87,4 +85,19 @@ void MainWindow::on_Speed_valueChanged(int value)
 {
     cout<<"michel "<<value <<endl;
     vitesse = value;
+}
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_Z:
+        break;
+    case Qt::Key_Q:
+        break;
+    case Qt::Key_S:
+        break;
+    case Qt::Key_D:
+        break;
+    default:
+        QWidget::keyPressEvent(event);
+    }
 }

@@ -15,5 +15,9 @@
         <file>Images/1398282578_home.png</file>
         <file>Images/chassisp.png</file>
         <file>Images/Wifibot.PNG</file>
+        <file>Images/main.ico</file>
+        <file>Images/main_bas.ico</file>
+        <file>Images/main_gauche.ico</file>
+        <file>Images/main_haut.ico</file>
     </qresource>
 </RCC>
