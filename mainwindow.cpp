@@ -9,12 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     direction=5;
     vitesse=0;
-    robot = new Client("192.168.1.106",15020);
-    robot->launch();
-    timer = new QTimer();
-    timer->setInterval(100);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start();
+
 }
 
 
@@ -39,6 +34,21 @@ void MainWindow::update()
     cout<<"hello"<<endl;
     cout<<"appel update"<<endl;
     robot->Communication(direction, vitesse);
+}
+
+void MainWindow::on_Connexion_clicked()
+{
+    robot = new Client(ui->Adresse->text().toStdString(),ui->Port->text().toInt());
+    robot->launch();
+    if(robot->estconnect())
+    {
+        ui->Port->setText("Connecter");
+        ui->Status->setStyleSheet("Qlabel#Status { background: green }");
+    }
+    timer = new QTimer();
+    timer->setInterval(100);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->start();
 }
 
 
@@ -90,14 +100,46 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
     case Qt::Key_Z:
+        on_Avancer_pressed();
         break;
     case Qt::Key_Q:
+        on_gauche_pressed();
         break;
     case Qt::Key_S:
+        on_reculer_pressed();
         break;
     case Qt::Key_D:
+        on_droit_pressed();
         break;
     default:
         QWidget::keyPressEvent(event);
+    }
+}
+void MainWindow::wheelEvent(QWheelEvent *event){
+    if (event->delta() > 0){
+        ui->Speed->setValue(ui->Speed->value()+20);
+    }else{
+        ui->Speed->setValue(ui->Speed->value()-20);
+    }
+}
+
+void MainWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_Z:
+        direction=5;
+        break;
+    case Qt::Key_Q:
+        direction=5;
+        break;
+    case Qt::Key_S:
+        direction=5;
+        break;
+    case Qt::Key_D:
+        direction=5;
+        break;
+    default:
+        direction =5;
+        QWidget::keyReleaseEvent(event);
     }
 }

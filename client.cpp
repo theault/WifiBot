@@ -13,11 +13,12 @@ void Client::launch()
 {
     cout << "avant" << endl;
    socket->connectToHost(ip ,port ); // connexion au robot sur le port et l'adresse ip spécifié
-   bool test = socket->waitForConnected(5000);
+   connecte = socket->waitForConnected(5000);
+}
 
-   if(test)
-       ui->Status->setStyleSheet("QLabel#Status { background: green }");
-       cout<<"connexion réussi"<<endl;
+bool Client::estconnect()
+{
+    return connecte;
 }
 
 void Client::Communication( int direction, int vitesse )
@@ -50,13 +51,13 @@ void Client::Direction(int direction, int vitesse)
 {
     switch(direction){
         case 1 :   VitroueA = vitesse;// tourner à droite
-                   VitroueB = ((vitesse/100)*40);
-                   flag =80;
+                   VitroueB = 150;
+                   flag =64;
                    break;
 
-        case 2 :    VitroueA =  ((vitesse/100)*40); //tourner à gauche
+        case 2 :    VitroueA =  150; //tourner à gauche
                     VitroueB = vitesse;
-                    flag = 80;
+                    flag = 16;
                     break;
 
         case 3 :    VitroueA =  vitesse;//continuer tout droit
@@ -83,7 +84,7 @@ void Client::receive()
      socket->read( sbuf, 21);
 
          int SpeedFront=(int)((sbuf[1] << 8) + sbuf[0]);
-         cout << SpeedFront<<endl;
+         //cout << SpeedFront<<endl;
          if(SpeedFront > 32767)
             SpeedFront=SpeedFront-65536;
          int BatLevel=sbuf[2];
@@ -91,16 +92,16 @@ void Client::receive()
          char IR=sbuf[3];
          char IR2=sbuf[4];
          int SpeedFront1=(int)(sbuf[10] << 8) + sbuf[9];
-          cout << SpeedFront1<<endl;
+          //cout << SpeedFront1<<endl;
          if(SpeedFront1 > 32767)
              SpeedFront1=SpeedFront1-65536;
          char IRbis=sbuf[11];
          char IR2bis=sbuf[12];
          char Current1=sbuf[17];
          char Current2=sbuf[17];
-         cout<<"-----------------------------------------------"<<endl;
+         /*cout<<"-----------------------------------------------"<<endl;
          cout<<"test :: "<< SpeedFront << " level bat "<<BatLevel << " vitesse " << SpeedFront1 <<endl;
-        cout<<"--------------------------------------------------"<<endl;
+        cout<<"--------------------------------------------------"<<endl;*/
 }
 
 quint16 Client::Crc16(QByteArray* byteArray, int pos){
@@ -119,7 +120,8 @@ quint16 Client::Crc16(QByteArray* byteArray, int pos){
     return crc;
 }
 
-bool Client::estconnecte(){
+/*int Client::levelbat(){
+    
+}*/
 
-    return socket->isOpen();
-}
+

@@ -6,12 +6,6 @@
 #include <QTimer>
 using namespace std;
 
-
- void update()
-{
-    cout<<"hello"<<endl;
-}
-
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
